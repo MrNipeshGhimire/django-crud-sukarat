@@ -11,36 +11,36 @@
 <body class="bg-gray-100 p-6">
 
   <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-8">
-    <h2 class="text-2xl font-bold text-gray-800 mb-6">Add New Product</h2>
+    <h2 class="text-2xl font-bold text-gray-800 mb-6">Update Product</h2>
 
-    <form class="space-y-5">
-      
+    <form class="space-y-5" method="POST" action="{% url "edit" prev_data.id %}">
+      {% csrf_token %}
       <!-- Title -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Product Title</label>
-        <input type="text" placeholder="Enter product title"
+        <input type="text" placeholder="Enter product title" value="{{prev_data.title}}" name="title"
           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
       </div>
 
       <!-- Category -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Category</label>
-        <input type="text" placeholder="Enter category"
+        <input type="text" placeholder="Enter category" value="{{prev_data.category}}" name="category"
           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
       </div>
 
       <!-- Price -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Price</label>
-        <input type="number" placeholder="Enter price"
+        <input type="number" placeholder="Enter price" value="{{prev_data.price}}" name="price"
           class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
       </div>
 
       <!-- Description -->
       <div>
         <label class="block text-sm font-medium text-gray-700 mb-1">Description</label>
-        <textarea rows="4" placeholder="Enter product description"
-          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        <textarea rows="4" placeholder="Enter product description" name="description"
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">{{prev_data.description}}</textarea>
       </div>
 
       <!-- Buttons -->
